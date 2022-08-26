@@ -1,0 +1,23 @@
+@mixin theme-dark() {
+  @if & {
+    @media (prefers-color-scheme: dark) {
+      body:not([class~="light-theme"]) & {
+        @content;
+      }
+    }
+
+    .dark-theme & {
+      @content;
+    }
+  } @else {
+    @media (prefers-color-scheme: dark) {
+      body:not([class~="light-theme"]) {
+        @content;
+      }
+    }
+
+    .dark-theme {
+      @content;
+    }
+  }
+}

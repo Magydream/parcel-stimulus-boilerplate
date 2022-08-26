@@ -1,3 +1,10 @@
-@function space($i, $spacing) {
-  @return calc(#{$i} * #{$spacing});
+@use "sass:math";
+
+$spacing: 8 !default; // in pixels
+
+@function space($value) {
+  $space: calc($value * $spacing);
+  $space-to-rem: #{math.div($space, 10)}rem;
+
+  @return $space-to-rem;
 }

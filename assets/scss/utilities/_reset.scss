@@ -88,34 +88,18 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+  font: 100% inherit;
   vertical-align: baseline;
 }
 
-button {
-  color: inherit;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  font-size: inherit;
+html {
+  /*
+    Rem balance against Pixel for simple calculations.
+    ex: 1rem = 10px | 1.6rem = 16px...
+   */
+  font-size: 62.5%;
 }
 
-form {
-  display: block;
-}
-
-select,
-input {
-  font-size: inherit;
-  font-family: inherit;
-}
-
-pre {
-  font-family: monospace;
-}
-
-// HTML5 display-role reset for older browsers
 article,
 aside,
 details,
@@ -155,33 +139,4 @@ q::after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-img {
-  max-width: 100%;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s;
-}
-
-textarea {
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  resize: none;
-}
-
-hr {
-  height: 1px;
-  background: var(--border);
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
 }

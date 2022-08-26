@@ -1,5 +1,7 @@
-// Typographies
-$font-body: "Inter", sans-serif !default;
+:root {
+  // Typo
+  --font: "Inter", sans-serif;
 
-// Espacement
-$spacing: 8px !default;
+  // Colors
+  --color-hand: #fac036;
+}

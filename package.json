@@ -23,6 +23,7 @@
     "stylelint-scss": "^4.2.0"
   },
   "dependencies": {
-    "stimulus": "^3.0.1"
+    "stimulus": "^3.0.1",
+    "stylelint-selector-bem-pattern": "^2.1.1"
   }
 }

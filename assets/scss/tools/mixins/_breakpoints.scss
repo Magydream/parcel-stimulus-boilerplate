@@ -1,24 +1,20 @@
-@mixin breakpoint-up($size) {
-  $size: strip-unit($size);
+/* stylelint-disable max-line-length */
+$breakpoints: (
+  "up-small":     ( min-width: 500px ),
+  "up-small-xl":  ( min-width: 640px ),
+  "up-medium":    ( min-width: 768px ),
+  "up-medium-xl": ( min-width: 1024px ),
+  "up-large":     ( min-width: 1280px ),
+  "up-large-xl":  ( min-width: 1440px ),
+  "up-large-xxl": ( min-width: 1780px )
+) !default;
 
-  @media (min-width: $size * 1px) {
-    @content;
-  }
-}
-
-@mixin breakpoint-down($size) {
-  $size: strip-unit($size);
-
-  @media (max-width: $size * 1px) {
-    @content;
-  }
-}
-
-@mixin breakpoint-between($down, $up) {
-  $down: strip-unit($down);
-  $up: strip-unit($up);
-
-  @media (min-width: $down * 1px) and (max-width: $up * 1px) {
-    @content;
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Aucune valeur n'a pu être récupérée à partir de `#{$breakpoint}`. " + "Les breakpoints disponibles sont : #{map-keys($breakpoints)}.";
   }
 }

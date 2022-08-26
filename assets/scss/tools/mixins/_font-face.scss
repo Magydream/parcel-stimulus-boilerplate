@@ -1,24 +1,22 @@
-/* stylelint-disable scss/no-global-function-names, function-url-quotes, value-keyword-case */
+@use "sass:string";
+@use "sass:map";
+@use "sass:list";
+
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
   $src: null;
-  $extmods: (
-    eot: "?",
-    svg: "#" + str-replace($name, " ", "_")
-  );
-  $formats: (
-    otf: "opentype",
-    ttf: "truetype"
-  );
+  $extmods: (eot: "?", svg: "#" + string-replace($name, " ", "_"));
+  $formats: (otf: "opentype", ttf: "truetype");
 
   @each $ext in $exts {
-    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-    $src: append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma);
+    $extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+    $format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
+    $url: string.quote($path + "." + $extmod);
+    $src: list.append($src, url($url) format(string.quote($format)), comma);
   }
 
   @if length($weight) == 1 {
     @font-face {
-      font-family: quote($name);
+      font-family: string.quote($name);
       font-style: $style;
       font-weight: $weight;
       font-display: swap;
@@ -26,16 +24,17 @@
     }
   } @else {
     $weights: $weight;
+
     @each $weight in $weights {
-      $suffix: map-get(
+      $suffix: map.get(
         (
-          200: ExtraLight,
-          300: Light,
-          400: Regular,
-          500: Medium,
-          600: SemiBold,
-          700: Bold,
-          900: Black
+          200: extralight,
+          300: light,
+          400: regular,
+          500: medium,
+          600: semibold,
+          700: bold,
+          900: black
         ),
         $weight
       );

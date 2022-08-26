@@ -1,0 +1,17 @@
+.hello {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: space(4);
+  text-align: center;
+}
+
+.hello__icon {
+  width: 8rem;
+  height: 8rem;
+  color: var(--color-hand);
+}
+
+.hello__title {
+  font-size: 4.8rem;
+}

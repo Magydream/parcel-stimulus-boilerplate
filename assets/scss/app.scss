@@ -1,5 +1,25 @@
-@import "tools/init";
-@import "utilities/init";
-@import "helpers/init";
+// Functions
+@import "tools/functions/string-replace";
+@import "tools/functions/space";
 
-@import "layout/init";
+// Mixins
+@import "tools/mixins/font-face";
+@import "tools/mixins/breakpoints";
+@import "tools/mixins/theme";
+
+// Utilities
+@import "utilities/reset";
+@import "utilities/typographies";
+@import "utilities/variables";
+
+// Helpers
+@import "helpers/hidden";
+
+// Components
+@import "components/icon";
+
+// Layout
+@import "layout/base";
+
+// Pages
+@import "pages/home";

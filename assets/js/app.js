@@ -4,10 +4,10 @@ import { Application } from "stimulus";
 import './../scss/app.scss';
 
 // Import Stimulus controllers
-import HelloParcelController from './controllers/hello-parcel_controller';
+import Hello from './controllers/hello_controller';
 
 // Start Stimulus
 const application = Application.start();
 
 // Declaration Stimulus controllers
-application.register('hello-parcel', HelloParcelController);
+application.register('hello', Hello);
