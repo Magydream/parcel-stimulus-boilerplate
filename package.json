@@ -1,9 +1,9 @@
 {
-  "name": "parcel-boilerplate",
+  "name": "parcel-stimulus-boilerplate",
   "version": "1.0.0",
-  "description": "Static boilerplate with Stimulus",
-  "repository": "git@github.com:julien-lmnr/parcel-boilerplate.git",
-  "author": "Julien Lemonnier <contact@labfordev.fr>",
+  "description": "Static boilerplate with Parcel and Stimulus",
+  "repository": "git@github.com:julien-lmnr/parcel-stimulus-boilerplate.git",
+  "author": "Julien Lemonnier <labfordev@gmail.com>",
   "license": "MIT",
   "private": true,
   "browserslist": "> 0.5%, last 2 versions, not dead",
