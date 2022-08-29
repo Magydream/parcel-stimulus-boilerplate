@@ -1,20 +1,66 @@
-/* stylelint-disable max-line-length */
+@use "sass:map";
+
 $breakpoints: (
-  "up-small":     ( min-width: 500px ),
-  "up-small-xl":  ( min-width: 640px ),
-  "up-medium":    ( min-width: 768px ),
-  "up-medium-xl": ( min-width: 1024px ),
-  "up-large":     ( min-width: 1280px ),
-  "up-large-xl":  ( min-width: 1440px ),
-  "up-large-xxl": ( min-width: 1780px )
+  small-xs: 320px,
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  large-xl: 1200px,
+  large-xxl: 1400px,
 ) !default;
 
-@mixin breakpoint($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media #{inspect(map-get($breakpoints, $breakpoint))} {
-      @content;
+/*
+Examples:
+
+// min-width
+@include breakpoint(medium, min) { ... } => @media (min-width: 768px) { ... }
+
+// max-width
+@include breakpoint(medium, max) { ... } => @media (max-width: 767px) { ... }
+
+// between
+@include breakpoint(medium, min) {
+  @include breakpoint(large, max) { ... }
+} => @media (min-width: 768px) and (max-width: 991px) { ... }
+
+//
+@include breakpoint(landscape, orientation) { ... } => @media (orientation: landscape) { ... }
+@include breakpoint(300px, max-height) { ... } => @media (max-height: 300px) { ... }
+ */
+
+@mixin breakpoint($breakpoint, $direction) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map.get($breakpoints, $breakpoint);
+
+    @if $direction == max {
+      @media (max-width: ($breakpoint-value - 1)) {
+        @content;
+      }
+    } @else if $direction == min {
+      @media (min-width: $breakpoint-value) {
+        @content;
+      }
+    } @else {
+      @media ($direction: $breakpoint-value) {
+        @content;
+      }
     }
-  } @else {
-    @warn "Aucune valeur n'a pu être récupérée à partir de `#{$breakpoint}`. " + "Les breakpoints disponibles sont : #{map-keys($breakpoints)}.";
+  }
+
+  // If the breakpoint doesn't exist in the map.
+  @else {
+    @if $direction == max {
+      @media (max-width: $breakpoint) {
+        @content;
+      }
+    } @else if $direction == min {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else {
+      @media ($direction: $breakpoint) {
+        @content;
+      }
+    }
   }
 }
