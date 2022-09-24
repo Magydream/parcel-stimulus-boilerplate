@@ -1,4 +1,4 @@
-import { Application } from "stimulus";
+import { Application } from "@hotwired/stimulus";
 
 // Import SCSS
 import './../scss/app.scss';
